@@ -1,6 +1,4 @@
-require 'discourse_api'
-require 'minitest/autorun'
-require 'minitest/pride'
+require 'test_helper'
 
 class ResourceTest < Minitest::Test
   class TestClient < DiscourseApi::Resource
