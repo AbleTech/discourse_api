@@ -13,7 +13,7 @@ class DiscourseApi::Resource
       route_args[k] = v
     end
 
-    define_method method_name do |args|
+    define_method method_name do |args = {}|
       parsed_path = DiscourseApi::ParsedPath.new(path, route_args)
       perform_post(parsed_path, args)
     end
@@ -27,7 +27,7 @@ class DiscourseApi::Resource
     array_args[1..-1].each do |k, v|
       route_args[k] = v
     end
-    define_method method_name do |args|
+    define_method method_name do |args = {}|
       parsed_path = DiscourseApi::ParsedPath.new(path, route_args)
       perform_get(parsed_path, args)
     end
