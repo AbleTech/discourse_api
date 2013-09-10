@@ -16,6 +16,16 @@ class ClientTest < Minitest::Unit::TestCase
     assert_equal(3000, client.port)
   end
 
+  def test_client_responds_to_topic
+    client = DiscourseApi::Client.new("localhost")
+    assert_respond_to(client, :topic)
+
+    stub_request(:get, /\/t\/[0-9]*\.json/)
+      .to_return(:body=>'{"hello": "world"}')
+
+    assert_equal client.topic(id: 1), {"hello" => "world"}
+  end
+
   def test_client_responds_to_topic_invite_user
     client = DiscourseApi::Client.new('localhost')
     assert_respond_to(client, :topic_invite_user)
